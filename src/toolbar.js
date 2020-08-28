@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2020. joleye.com all rights reserved..
+ * 工具栏操作控件 0.1
+ * @anther joleye
+ * 表单验证控件 0.7
+ */
+
 define(['jquery', 'processLoading'], function ($, process) {
     $.fn.toolbar = function (conf) {
         $(this).data('conf', conf);
@@ -36,7 +43,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                 $.extend(params, config[act].params);
             }
             var dataParams = $(this).data('params');
-            if(dataParams){
+            if (dataParams) {
                 $.extend(params, dataParams);
             }
             if (config[act].itemPost) {
