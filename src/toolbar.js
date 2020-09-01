@@ -9,7 +9,7 @@ define(['jquery', 'processLoading'], function ($, process) {
     $.fn.toolbar = function (conf) {
         $(this).data('conf', conf);
         $(this).click(function () {
-            var act = $(this).attr('act');
+            var act = $(this).attr('act') || $(this).data('act');
             var dataConf = $(this).data('conf');
             var config = dataConf.conf;
 
@@ -40,11 +40,19 @@ define(['jquery', 'processLoading'], function ($, process) {
                 params[config[act].argName] = ids.join(',');
             }
             if (config[act].params) {
-                $.extend(params, config[act].params);
+                if(typeof config[act].params == 'function'){
+                    $.extend(params, config[act].params());
+                }else {
+                    $.extend(params, config[act].params);
+                }
             }
             var dataParams = $(this).data('params');
             if (dataParams) {
-                $.extend(params, dataParams);
+                if(typeof dataParams == 'function'){
+                    $.extend(params, dataParams());
+                }else {
+                    $.extend(params, dataParams);
+                }
             }
             if (config[act].itemPost) {
                 var resList = [];
