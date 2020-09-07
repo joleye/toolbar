@@ -1,0 +1,42 @@
+/*上传按钮*/
+
+.el-file {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+
+  .el-file-input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .el-file-label {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: #cccccc 1px dashed;
+    color: #cccccc;
+    font-weight: normal;
+    font-size: 36px;
+    text-align: center;
+    margin-left: 15px;
+    border-radius: 5px;
+    line-height: 50px;
+  }
+}
+
+.el-file.loading {
+  background: url("../img/loading.gif") no-repeat center center;
+
+  .el-file-label {
+    text-indent: -9999px;
+  }
+}

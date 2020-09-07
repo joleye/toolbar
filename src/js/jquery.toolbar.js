@@ -2,7 +2,7 @@
  * Copyright (c) 2020. joleye.com all rights reserved..
  * 工具栏操作控件 0.1
  * @anther joleye
- * 表单验证控件 0.7
+ * https://github.com/joleye/toolbar
  */
 
 define(['jquery', 'processLoading'], function ($, process) {
@@ -11,6 +11,7 @@ define(['jquery', 'processLoading'], function ($, process) {
         $(this).click(function () {
             var act = $(this).attr('act') || $(this).data('act');
             var dataConf = $(this).data('conf');
+            var $that = $(this);
             var config = dataConf.conf;
 
             var ids = [];
@@ -54,6 +55,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                     $.extend(params, dataParams);
                 }
             }
+            $that.prop('disabled', true);
             if (config[act].itemPost) {
                 var resList = [];
                 $.each(ids, function (index, val) {
@@ -64,6 +66,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                         async: false,
                         data: params,
                         success: function (res) {
+                            $that.prop('disabled', false);
                             resList.push(res);
                             process.putMsg(res.msg);
                             if (res.status) {
@@ -81,6 +84,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                 }
             } else {
                 $.post(config[act].action, params, function (res) {
+                    $that.prop('disabled', false);
                     if (config[act].callback) {
                         config[act].callback(res);
                     } else if (dataConf.callback) {

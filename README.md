@@ -37,3 +37,7 @@ $('.toolbar .btn').toolbar({
             }
         });
 ```
+
+# upload
+
+上传组件
