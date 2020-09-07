@@ -1,9 +1,17 @@
+/**
+ * Copyright (c) 2020. joleye.com all rights reserved..
+ * 工具栏操作控件 0.1
+ * @anther joleye
+ * https://github.com/joleye/toolbar
+ */
+
 define(['jquery', 'processLoading'], function ($, process) {
     $.fn.toolbar = function (conf) {
         $(this).data('conf', conf);
         $(this).click(function () {
-            var act = $(this).attr('act');
+            var act = $(this).attr('act') || $(this).data('act');
             var dataConf = $(this).data('conf');
+            var $that = $(this);
             var config = dataConf.conf;
 
             var ids = [];
@@ -33,12 +41,21 @@ define(['jquery', 'processLoading'], function ($, process) {
                 params[config[act].argName] = ids.join(',');
             }
             if (config[act].params) {
-                $.extend(params, config[act].params);
+                if(typeof config[act].params == 'function'){
+                    $.extend(params, config[act].params());
+                }else {
+                    $.extend(params, config[act].params);
+                }
             }
             var dataParams = $(this).data('params');
-            if(dataParams){
-                $.extend(params, dataParams);
+            if (dataParams) {
+                if(typeof dataParams == 'function'){
+                    $.extend(params, dataParams());
+                }else {
+                    $.extend(params, dataParams);
+                }
             }
+            $that.prop('disabled', true);
             if (config[act].itemPost) {
                 var resList = [];
                 $.each(ids, function (index, val) {
@@ -49,6 +66,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                         async: false,
                         data: params,
                         success: function (res) {
+                            $that.prop('disabled', false);
                             resList.push(res);
                             process.putMsg(res.msg);
                             if (res.status) {
@@ -66,6 +84,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                 }
             } else {
                 $.post(config[act].action, params, function (res) {
+                    $that.prop('disabled', false);
                     if (config[act].callback) {
                         config[act].callback(res);
                     } else if (dataConf.callback) {
