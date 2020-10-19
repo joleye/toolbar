@@ -41,17 +41,19 @@ define(['jquery', 'processLoading'], function ($, process) {
                 params[config[act].argName] = ids.join(',');
             }
             if (config[act].params) {
-                if(typeof config[act].params == 'function'){
-                    $.extend(params, config[act].params());
-                }else {
+                if (typeof config[act].params == 'function') {
+                    let newArg = config[act].params.apply(this);
+                    $.extend(params, newArg);
+                } else {
                     $.extend(params, config[act].params);
                 }
             }
             var dataParams = $(this).data('params');
             if (dataParams) {
-                if(typeof dataParams == 'function'){
-                    $.extend(params, dataParams());
-                }else {
+                if (typeof dataParams == 'function') {
+                    let newArg = dataParams.apply(this);
+                    $.extend(params, newArg);
+                } else {
                     $.extend(params, dataParams);
                 }
             }
