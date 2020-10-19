@@ -49,7 +49,7 @@ define(['jquery'], function ($) {
 
     function _get_option(opt) {
         var option = {
-            form_id: 'upload_form',
+            form_id: 'upload_form_'+new Date().getTime(),
             target_form: 'target_form',
             action: '/upload',
             callback_tpl: 'img_tpl',
