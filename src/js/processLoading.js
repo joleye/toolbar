@@ -37,7 +37,9 @@ define(['jquery'], function ($) {
         putMsg: function (msg, opt, interval) {
             this.exit(0, null);
             opt = typeof opt == 'undefined' ? 'default' : opt;//opt : default, warning, success
-            $('<div id="LoadingPopBox" style="position:fixed;top:4px;left:0; width:100%; text-align: center; background:' + color[opt] + ';color:#fff;padding:3px 8px;z-index:9999;border-radius: .25em;max-height:200px;"><div>' + msg + '</div></div>').appendTo($(document.body));
+            var style = 'position:fixed;top:4px;left:0; width:100%; text-align: center; background:' + color[opt] + ';' +
+                'color:#fff;padding:3px 8px;z-index:9999;border-radius: .25em;max-height:600px;';
+            $('<div id="LoadingPopBox" style=""><div>' + msg + '</div></div>').appendTo($(document.body));
             if (interval) {
                 this.exit(interval, null);
             }
