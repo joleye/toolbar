@@ -41,3 +41,7 @@ $('.toolbar .btn').toolbar({
 # upload
 
 上传组件
+
+
+# batchEdit
+异步编辑工具

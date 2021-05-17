@@ -10,11 +10,13 @@ define(['jquery'], function ($) {
     $.image_list = function (opt, original_option) {
         var option = _get_option(opt);
         //初始化图片列表
-        $.post(option.init_url, option.init_params, function (data) {
-            if (data && data.rows && data.rows.length > 0) {
-                opt.callback(data, original_option);
-            }
-        });
+        if(option.init_url) {
+            $.post(option.init_url, option.init_params, function (data) {
+                if (data && data.rows && data.rows.length > 0) {
+                    opt.callback(data, original_option);
+                }
+            });
+        }
     };
 
     $.fn.upload = function (opt) {
