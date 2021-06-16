@@ -71,7 +71,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                             $that.prop('disabled', false);
                             resList.push(res);
                             process.putMsg(res.msg);
-                            if (res.status) {
+                            if (res.status || res.result) {
                                 process.putMsg(res.msg, 'success', 3000);
                             } else {
                                 process.putMsg(res.msg, 'warning', 30000);
@@ -93,7 +93,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                         dataConf.callback(res);
                     } else {
                         process.putMsg(res.msg);
-                        if (res.status) {
+                        if (res.status || res.result) {
                             process.putMsg(res.msg, 'success', 3000);
                             setTimeout(function () {
                                 location.reload();
