@@ -29,12 +29,12 @@ define(['jquery', 'processLoading'], function ($, process) {
             }
 
             if (dataConf.before) {
-                if (!dataConf.before(dataConf, act)) {
+                if (!dataConf.before(dataConf, act, ids)) {
                     return;
                 }
             }
             if (config[act].before) {
-                if (!config[act].before(dataConf, act)) {
+                if (!config[act].before(dataConf, act, ids)) {
                     return;
                 }
             }
