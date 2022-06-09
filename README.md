@@ -75,11 +75,21 @@ $('.toolbar .btn').toolbar({
 $('#_inputFile').upload({
     action: '/upload',
     callback_tpl: 'img_tpl',
-    init_url: '/get_image_list',//预览数据接口地址
     upload_area_id: 'upload_area_id',
+    init_url: '/get_image_list',//预览数据接口地址
+    success: function(rows){},
     init_params: {typ_id: 10, link_id: ''}
 });
 ```
+
+|参数名称|说明|
+|---|---|
+|action|上传url|
+|callback_tpl|回调模板id|
+|upload_area_id|回调模板显示区域，需要搭配callback_tpl使用|
+|init_url|初始化url|
+|init_params|初始化参数或方法，需要搭配初始url使用，方法则this指向当前文件域|
+|success|上传成功回调|
 
 # batchEdit
 异步编辑工具
