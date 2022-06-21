@@ -90,6 +90,7 @@ $('#_inputFile').upload({
 |init_url|初始化url|
 |init_params|初始化参数或方法，需要搭配初始url使用，方法则this指向当前文件域|
 |success|上传成功回调|
+|init_complete|数据初始化回调函数|
 
 # batchEdit
 异步编辑工具

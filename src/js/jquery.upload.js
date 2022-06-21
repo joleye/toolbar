@@ -1,6 +1,6 @@
 /**
- * Copyright (c) 2020. joleye.com all rights reserved..
- * 工具栏操作控件 0.2
+ * Copyright (c) 2022. joleye.com all rights reserved..
+ * 工具栏操作控件 0.2.1
  * 文件上传
  * @anther joleye
  * https://github.com/joleye/toolbar
@@ -8,6 +8,7 @@
 define(['jquery'], function ($) {
     $.fn.image_list = function (opt, original_option) {
         var option = _get_option(opt);
+        var that = this;
         //初始化图片列表
         if (option.init_url) {
             var data = {};
@@ -20,6 +21,8 @@ define(['jquery'], function ($) {
                 if (res && res.rows && res.rows.length > 0) {
                     opt.callback(res, original_option);
                 }
+
+                opt.init_complete && opt.init_complete.call(that, res.rows);
             });
         }
     };
