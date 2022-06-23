@@ -180,7 +180,9 @@ define(['jquery'], function ($) {
                         'img_name': val.img_name,
                         'file_path': val.file_path,
                         'path': val.file_path || val.img_path,
-                        'img_id': val._id
+                        'img_id': val._id,
+                        'add_time2': val.add_time2,
+                        'status': val.status
                     };
 
                     $.each(conf, function (key, val) {
