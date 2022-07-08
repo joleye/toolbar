@@ -78,7 +78,8 @@ $('#_inputFile').upload({
     upload_area_id: 'upload_area_id',
     init_url: '/get_image_list',//预览数据接口地址
     success: function(rows){},
-    init_params: {typ_id: 10, link_id: ''}
+    init_params: {typ_id: 10, link_id: ''},
+    allow: ['jpg']
 });
 ```
 
@@ -91,6 +92,7 @@ $('#_inputFile').upload({
 |init_params|初始化参数或方法，需要搭配初始url使用，方法则this指向当前文件域|
 |success|上传成功回调|
 |init_complete|数据初始化回调函数|
+|allow|允许上传文件，如:['mp3']|
 
 # batchEdit
 异步编辑工具

@@ -97,6 +97,12 @@ define(['jquery'], function ($) {
         var selector = '#' + option.form_id;
         var $area = $(self).parent('div');
 
+        var ext = self.value.substring(self.value.lastIndexOf('.') + 1);
+        if (option.allow && option.allow.indexOf(ext) === -1) {
+            alert('不允许的文件类型～');
+            return;
+        }
+
         $(self).appendTo($(selector).html('')).removeAttr('id');
 
         clone.bind('change', function () {
