@@ -1,6 +1,6 @@
 /**
- * Copyright (c) 2020. joleye.com all rights reserved..
- * 工具栏操作控件 0.1
+ * Copyright (c) 2022. joleye.com all rights reserved..
+ * 工具栏操作控件 0.1.1
  * @anther joleye
  * https://github.com/joleye/toolbar
  */
@@ -19,7 +19,7 @@ define(['jquery', 'processLoading'], function ($, process) {
                 ids.push($(this).val());
             });
 
-            if (config[act].argName && ids.length == 0) {
+            if (config[act].argName && ids.length === 0) {
                 alert('请选择');
                 return;
             }
@@ -29,12 +29,12 @@ define(['jquery', 'processLoading'], function ($, process) {
             }
 
             if (dataConf.before) {
-                if (!dataConf.before(dataConf, act, ids)) {
+                if (!dataConf.before.call(this, dataConf, act, ids)) {
                     return;
                 }
             }
             if (config[act].before) {
-                if (!config[act].before(dataConf, act, ids)) {
+                if (!config[act].before.call(this, dataConf, act, ids)) {
                     return;
                 }
             }
