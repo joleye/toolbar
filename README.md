@@ -81,6 +81,14 @@ $('#_inputFile').upload({
     init_params: {typ_id: 10, link_id: ''},
     allow: ['jpg']
 });
+
+//新方法提交
+$('#_inputFile').upload2({
+    init_url: '',
+    init_params: function(){},
+    success: function(rows){},
+    init_complete: function(rows){}
+});
 ```
 
 |参数名称|说明|
